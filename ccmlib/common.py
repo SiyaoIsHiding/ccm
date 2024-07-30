@@ -999,8 +999,7 @@ def _update_java_version(current_java_version, current_java_home_version,
     if current_java_version and current_java_home_version is None:
         raise RuntimeError("JAVA_HOME must be defined if java command is available on the PATH.")
     if current_java_version and current_java_home_version != current_java_version:
-        raise RuntimeError("The version of java available on PATH {} does not match the Java version of the distribution provided via JAVA_HOME {}."
-                           .format(current_java_version, current_java_home_version))
+        current_java_version = current_java_home_version
 
     if cassandra_version is None and install_dir:
         cassandra_version = get_version_from_build(install_dir)
